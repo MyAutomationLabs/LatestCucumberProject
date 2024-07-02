@@ -67,3 +67,7 @@ https://youtu.be/kPhpJzlnUTs
 ![img.png](img.png)
 
 ![img_1.png](img_1.png)
+
+### Commands used for Allure - Report
+* npm install -g allure-commandline --save-dev
+* allure generate allure-results --clean -o allure-report
