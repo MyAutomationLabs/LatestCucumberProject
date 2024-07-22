@@ -16,7 +16,7 @@ public class HomePage extends BrowserDriver {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.get("https://anupdamoda.github.io/AceOnlineShoePortal/index.html#");
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         driver.findElement(By.xpath(hamburger_menu_xpath)).click();
     }
 
