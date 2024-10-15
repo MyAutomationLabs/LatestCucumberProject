@@ -9,5 +9,6 @@ public class practice {
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.screener.in/company/INFY/consolidated/");
         System.out.println(driver.getTitle());
+        driver.quit();
     }
 }
