@@ -1,16 +1,21 @@
 package runner;
 
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
-import org.junit.runner.RunWith;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+import org.testng.annotations.DataProvider;
 
-
-@RunWith(Cucumber.class)
-@CucumberOptions (
-        features = "src/test/java/features",
-        glue = {"utility", "stepDefinition" },
-        plugin = {"io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm" }
+@CucumberOptions(
+        features = "src/test/java/features/Screener.feature",
+        glue = {"stepDefinition"},
+        plugin = {"pretty", "html:runner/CustomFormatter.java"},
+        monochrome = true,
+        publish = true
 )
-public class TestRunner {
+public class TestRunner extends AbstractTestNGCucumberTests {
 
+    @Override
+    @DataProvider(parallel = true)
+    public Object[][] scenarios() {
+        return super.scenarios();
+    }
 }
