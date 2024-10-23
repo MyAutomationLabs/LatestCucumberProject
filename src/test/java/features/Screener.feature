@@ -3,12 +3,14 @@ Feature: Screener Login Page
   Background:
     Given User navigates to the Screener Login page
 
+  @priority1
   Scenario: Validate a user is able to login to Screener Page
     Given User is on the Screener Login page
     When User clicks on Login button
     Then User should be able to view the Screener Login page
     And User able to enter valid Username and Password to land to home page or use login using google
 
+  @priority2
   Scenario Outline: Unsuccessful login with invalid or empty credentials
     Given I have entered invalid "<username>" and "<password>"
     When I click on the login button

@@ -16,6 +16,13 @@
         <aspectj.version>1.9.21</aspectj.version>
 
     </properties>
+    <repositories>
+        <repository>
+            <id>allure-repository</id>
+            <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+    </repositories>
+
 
     <dependencyManagement>
         <dependencies>
@@ -97,11 +104,13 @@
             <version>2.25.0</version>
             <scope>test</scope>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>2.29.0</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber7-jvm -->
@@ -118,8 +127,6 @@
             <version>2.20.0</version> <!-- Use the latest version -->
         </dependency>
 
-
-
     </dependencies>
 
     <build>
@@ -129,16 +136,64 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version> <!-- Updated version -->
             </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <phase>verify</phase> <!-- Generate report after test execution -->
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>clean-allure-results</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>${project.basedir}/allure-results</directory>
+                                    <includes>
+                                        <include>**/*</include>
+                                    </includes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version> <!-- Updated version -->
+                <version>3.1.2</version>
                 <configuration>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
             <!-- Update other plugins as needed -->

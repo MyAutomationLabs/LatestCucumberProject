@@ -1,4 +1,3 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Wed Mar 13 22:39:00 AEDT 2024","Wed Mar 13 22:39:06 AEDT 2024","6464","","LoggedIn User View","","Validate user is able to view after Login","","Validate user is able to view after Login",""
-"passed","Wed Mar 13 22:38:51 AEDT 2024","Wed Mar 13 22:39:00 AEDT 2024","8430","","General View","","Validate general user is able to view products wihtout logging in","","Validate general user is able to view products wihtout logging in",""
-"passed","Wed Mar 13 22:39:06 AEDT 2024","Wed Mar 13 22:39:12 AEDT 2024","5715","","New User Registration View","","Validate new user is able to view after clicking on new Registration","","Validate new user is able to view after clicking on new Registration",""
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","7822","Validate a user is able to login to Screener Page","","Wed Oct 23 22:29:49 ACDT 2024","passed","Wed Oct 23 22:29:57 ACDT 2024","","Screener Login Page","Validate a user is able to login to Screener Page",""
+"","7134","Unsuccessful login with invalid or empty credentials","","Wed Oct 23 22:29:49 ACDT 2024","passed","Wed Oct 23 22:29:56 ACDT 2024","","Screener Login Page","Unsuccessful login with invalid or empty credentials",""

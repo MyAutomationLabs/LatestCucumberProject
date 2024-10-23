@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Cucumber Test Suite" parallel="true" thread-count="4">
+<suite name="Cucumber Test Suite" parallel="true" thread-count="2">
     <test name="Cucumber Scenarios">
         <classes>
             <class name="runner.TestRunner" />
         </classes>
     </test>
+
+   <!--  First Test: Execute High Priority Scenarios (@priority1)
+    <test name="High Priority Tests">
+        <parameter name="cucumber.filter.tags" value="@priority1" />
+        <classes>
+            <class name="runner.TestRunner" />
+        </classes>
+    </test>
+
+    &lt;!&ndash; Second Test: Execute Medium Priority Scenarios (@priority2) &ndash;&gt;
+    <test name="Medium Priority Tests">
+        <parameter name="cucumber.filter.tags" value="@priority2" />
+        <classes>
+            <class name="runner.TestRunner" />
+        </classes>
+    </test>-->
+
 </suite>
