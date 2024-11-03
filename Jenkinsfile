@@ -14,7 +14,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clone the Git repository
-                git url: 'https://github.com/your-username/your-repo.git', branch: 'main'
+                git url: 'https://github.com/MyAutomationLabs/LatestCucumberProject.git
             }
         }
 
