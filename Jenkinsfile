@@ -46,7 +46,7 @@ pipeline {
             archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
             
             // Publish TestNG test results
-            junit testResultsPattern: 'target/testng-results.xml'
+            junit testResults: 'target/testng-results.xml'
 
             // Publish Allure report
             allure includeProperties: false, jdk: '', reportBuildPolicy: 'ALWAYS', results: [[path: "${env.ALLURE_RESULTS}"]]
