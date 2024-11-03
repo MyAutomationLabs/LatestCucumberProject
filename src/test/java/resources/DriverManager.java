@@ -4,8 +4,8 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.annotations.BeforeSuite;
+import resources.AllureResultsCleaner;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,11 +14,12 @@ public class DriverManager {
 
     @BeforeSuite
     public void cleanAllureResults() throws IOException {
-        File resultsDir = new File("allure-results");
+       File resultsDir = new File("allure-results");
         if (resultsDir.exists()) {
             FileUtils.cleanDirectory(resultsDir);  // Clean the allure-results directory
         }
     }
+
     // ThreadLocal to ensure WebDriver instances are separate for each thread in parallel execution
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 

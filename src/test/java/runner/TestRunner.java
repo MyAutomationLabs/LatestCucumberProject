@@ -7,10 +7,10 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 @CucumberOptions(
-        features = "src/test/java/features/Screener.feature",
-        glue = {"stepDefinition"},
+        features = "src/test/java/features/GetProducts.feature",
+        glue = {"apiClass"},
         plugin = {"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
-        tags = "@priority1 or @priority2",
+        tags = "@api1",
         monochrome = true,
         publish = true
 )
