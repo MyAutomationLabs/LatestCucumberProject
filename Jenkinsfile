@@ -22,7 +22,7 @@ pipeline {
             steps {
                 // Run Maven clean and package
                 script {
-                    withMaven(maven: 'Maven 3.8.7') {
+                    withMaven(maven: 'Maven 3.8.7', globalSettingsFile: '/Users/subrat/apache-maven-3.8.7/conf/settings.xml') {
                         sh 'mvn clean package'
                     }
                 }
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 // Run TestNG tests with Maven
                 script {
-                    withMaven(maven: 'Maven 3.8.7') {
+                    withMaven(maven: 'Maven 3.8.7', globalSettingsFile: '/Users/subrat/apache-maven-3.8.7/conf/settings.xml') {
                         sh 'mvn test'
                     }
                 }
