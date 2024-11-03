@@ -43,7 +43,7 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: 'target/*.jar', allowEmptyResults: true
+            archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
             
             // Publish TestNG test results
             junit testResults: '**/testng-results/*.xml'
