@@ -12,7 +12,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.ScreenerLoginPage;
-import resources.DriverManager;
+import utilities.DriverManager;
 
 public class ScreenerLogin {
 

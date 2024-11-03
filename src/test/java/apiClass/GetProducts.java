@@ -4,13 +4,11 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.commons.io.FileUtils;
 import org.testng.Assert;
-import org.testng.annotations.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import resources.AllureResultsCleaner;
+import utilities.AllureResultsCleaner;
 import java.io.IOException;
 
 /**

@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
         features = "src/test/java/features/GetProducts.feature",
         glue = {"apiClass"},
         plugin = {"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
-        tags = "@api1",
+        //tags = "@api1",
         monochrome = true,
         publish = true
 )

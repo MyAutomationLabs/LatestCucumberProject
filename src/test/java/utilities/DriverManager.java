@@ -1,11 +1,10 @@
-package resources;
+package utilities;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeSuite;
-import resources.AllureResultsCleaner;
 
 import java.io.File;
 import java.io.IOException;
