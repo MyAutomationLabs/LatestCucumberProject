@@ -43,10 +43,10 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'target/*.jar', allowEmptyResults: true
             
             // Publish TestNG test results
-            junit testResults: 'target/testng-results.xml'
+            junit testResults: '**/testng-results/*.xml'
 
             // Publish Allure report
             allure includeProperties: false, jdk: '', reportBuildPolicy: 'ALWAYS', results: [[path: "${env.ALLURE_RESULTS}"]]
