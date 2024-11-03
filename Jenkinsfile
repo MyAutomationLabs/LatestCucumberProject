@@ -2,7 +2,7 @@ pipeline {
     agent any  // Use the default Jenkins node
 
     tools {
-        maven 'Maven 3.8.1'  // Set this to your Maven version in Jenkins
+        maven 'Maven 3.8.7'  // Set this to your Maven version in Jenkins
         jdk 'JDK 21'         // Adjust JDK version based on project requirements
     }
 
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 // Run Maven clean and package
                 script {
-                    withMaven(maven: 'Maven 3.8.1') {
+                    withMaven(maven: 'Maven 3.8.7') {
                         sh 'mvn clean package'
                     }
                 }
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 // Run TestNG tests with Maven
                 script {
-                    withMaven(maven: 'Maven 3.8.1') {
+                    withMaven(maven: 'Maven 3.8.7') {
                         sh 'mvn test'
                     }
                 }
