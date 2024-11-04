@@ -2,7 +2,7 @@ pipeline {
     agent any  // Use the default Jenkins node
 
     tools {
-        maven 'Maven 3.8.1'  // Set this to your Maven version in Jenkins
+        maven 'Maven 3.8.7'  // Set this to your Maven version in Jenkins
         jdk 'JDK 21'         // Adjust JDK version based on project requirements
     }
 
@@ -14,7 +14,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clone the Git repository
-                git url: 'https://github.com/MyAutomationLabs/LatestCucumberProject.git
+                git url: 'https://github.com/MyAutomationLabs/LatestCucumberProject.git'
             }
         }
 
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 // Run Maven clean and package
                 script {
-                    withMaven(maven: 'Maven 3.8.1') {
+                    withMaven(maven: 'Maven 3.8.7') {
                         sh 'mvn clean package'
                     }
                 }
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 // Run TestNG tests with Maven
                 script {
-                    withMaven(maven: 'Maven 3.8.1') {
+                    withMaven(maven: 'Maven 3.8.7') {
                         sh 'mvn test'
                     }
                 }
@@ -46,7 +46,7 @@ pipeline {
             archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
             
             // Publish TestNG test results
-            publishTestNGResult testResultsPattern: 'target/testng-results.xml'
+            junit testResults: 'target/testng-results.xml'
 
             // Publish Allure report
             allure includeProperties: false, jdk: '', reportBuildPolicy: 'ALWAYS', results: [[path: "${env.ALLURE_RESULTS}"]]

@@ -12,7 +12,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.ScreenerLoginPage;
-import resources.DriverManager;
+import utilities.DriverManager;
 
 public class ScreenerLogin {
 
@@ -23,7 +23,7 @@ public class ScreenerLogin {
     @Before
     public void setup() {
         driver = DriverManager.getDriver();  // Ensures driver is initialized from DriverManager
-        scrLogin = new ScreenerLoginPage(driver);  // Initialize page object after driver setup
+        scrLogin = new ScreenerLoginPage(driver);// Initialize page object after driver setup
     }
 
     @Given("User navigates to the Screener Login page")
@@ -95,14 +95,12 @@ public class ScreenerLogin {
         scrLogin.errorMessageInvalidLogin();
         attachScreenshot();
     }
-    @SuppressWarnings("unused")
+
     @Attachment(value = "Screenshot", type = "image/png")
-    public byte[] attachScreenshot() {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    public void attachScreenshot() {
+        ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
-
-    // This method is called after each scenario to quit the WebDriver
     @After
     public void tearDown() {
         DriverManager.quitDriver();
