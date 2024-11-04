@@ -195,6 +195,7 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
+                    <reportsDirectory>target/test-output</reportsDirectory>
                 </configuration>
                 <dependencies>
                     <dependency>
