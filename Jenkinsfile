@@ -22,9 +22,10 @@ pipeline {
             steps {
                 // Run Maven clean and package
                 script {
-                    withMaven(maven: 'Maven 3.8.7') {
-                        sh 'mvn clean package'
+                    withMaven(maven: 'Maven 3.8.7', options: [disablePublisher('JunitTestsPublisher')]) {
+                    sh 'mvn clean package'
                     }
+
                 }
             }
         }
