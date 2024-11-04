@@ -21,22 +21,24 @@ pipeline {
         stage('Build') {
             steps {
                 // Run Maven clean and package
-                script {
-                    withMaven(maven: 'Maven 3.8.7') {
-                    sh 'mvn clean package'
-                    }
-                }
+                sh 'mvn clean package'
+                // script {
+                //     withMaven(maven: 'Maven 3.8.7') {
+                //     sh 'mvn clean package'
+                //     }
+                // }
             }
         }
 
         stage('Test') {
             steps {
                 // Run TestNG tests with Maven
-                 script {
-                     withMaven(maven: 'Maven 3.8.7') {
-                        sh 'mvn test'
-                    }
-                }
+                sh 'mvn test'
+                //  script {
+                //      withMaven(maven: 'Maven 3.8.7') {
+                //         sh 'mvn test'
+                //     }
+                // }
             }
         }
     }
