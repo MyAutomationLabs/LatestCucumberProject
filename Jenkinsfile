@@ -21,22 +21,24 @@ pipeline {
         stage('Build') {
             steps {
                 // Run Maven clean and package
-                script {
-                    withMaven(maven: 'Maven 3.8.7') {
-                        sh 'mvn clean package'
-                    }
-                }
+                sh 'mvn clean package'
+                // script {
+                //     withMaven(maven: 'Maven 3.8.7') {
+                //     sh 'mvn clean package'
+                //     }
+                // }
             }
         }
 
         stage('Test') {
             steps {
                 // Run TestNG tests with Maven
-                script {
-                    withMaven(maven: 'Maven 3.8.7') {
-                        sh 'mvn test'
-                    }
-                }
+                sh 'mvn test'
+                //  script {
+                //      withMaven(maven: 'Maven 3.8.7') {
+                //         sh 'mvn test'
+                //     }
+                // }
             }
         }
     }
@@ -46,7 +48,7 @@ pipeline {
             archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
             
             // Publish TestNG test results
-           // junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
+            // junit allowEmptyResults: true, testResults: 'target/test-output/*.xml'
             //junit testResults: '**/testng-results/*.xml'
 
             // Publish Allure report
