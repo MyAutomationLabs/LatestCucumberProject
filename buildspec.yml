@@ -4,7 +4,7 @@ phases:
   install:
     runtime-versions:
       java: 21  # or specify your Java version
-      maven: 3.8.7       # or your Maven version
+      maven: 3.8       # or your Maven version
     commands:
       - echo "Starting Install Phase"
       - echo "Setting up Allure CLI for reporting"
