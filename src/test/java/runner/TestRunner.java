@@ -7,8 +7,8 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 @CucumberOptions(
-        features = "src/test/java/features/GetProducts.feature",
-        glue = {"apiClass"},
+        features = "src/test/java/features/Screener.feature",
+        glue = {"stepDefinition"},
         plugin = {"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
         //tags = "@api1",
         monochrome = true,
