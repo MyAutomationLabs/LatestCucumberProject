@@ -24,13 +24,15 @@ phases:
       - mvn clean package -DskipTests=false
       - echo "Running Maven tests"
       - mvn test
+      - mvn allure:report 
   post_build:
     commands:
       - echo "Starting Post-Build Phase"
       - echo "Generating Allure Report"
       - allure generate allure-results --clean -o allure-report
+      - aws s3 cp ./target/allure-report s3://codepipeline-ap-southeast-2-166223259325/allure-report --recursive
 artifacts:
   files:
     - target/*.jar                # Adjust this based on your packaging type (e.g., .war or .jar)
     - allure-report/**/*           # Allure report files
-  discard-paths: no
+  discard-paths: yes
