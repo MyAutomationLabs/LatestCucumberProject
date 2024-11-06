@@ -154,7 +154,7 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
-                        <phase>verify</phase> <!-- Generate report after test execution -->
+                        <phase>test</phase> <!-- Generate report after test execution -->
                     </execution>
                 </executions>
             </plugin>

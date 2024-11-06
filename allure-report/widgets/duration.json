@@ -1,1 +1,0 @@
-[{"uid":"768cc328961e8490","name":"Verify the rate of the first product","time":{"start":1729908536589,"stop":1729908540770,"duration":4181},"status":"passed","severity":"normal"},{"uid":"a5fc0f1afc721c94","name":"Verify the GET api for the products","time":{"start":1729908536588,"stop":1729908539885,"duration":3297},"status":"passed","severity":"normal"}]
