@@ -30,7 +30,7 @@ phases:
     commands:
       - echo "Starting Post-Build Phase"
       - allure generate allure-results --clean -o allure-report
-      - aws s3 cp ./target/allure-report s3://codepipeline-ap-southeast-2-166223259325/allure-report --recursive
+      - aws s3 cp allure-report s3://codepipeline-ap-southeast-2-166223259325/allure-report --recursive
 artifacts:
   files:
     - '**/*'                # Adjust this based on your packaging type (e.g., .war or .jar)
