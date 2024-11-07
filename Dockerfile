@@ -1,5 +1,7 @@
-FROM maven:3.8-openjdk-11  # Use the latest 3.8.x version with OpenJDK 11
+# Dockerfile
+FROM maven:3.8-openjdk-11  # Ensure no extra spaces here
 WORKDIR /usr/src/app
 COPY . .
-RUN mvn clean install
-CMD ["mvn", "verify"]
+RUN mvn clean install  # Install dependencies
+CMD ["mvn", "verify"]  # Command to run tests
+
