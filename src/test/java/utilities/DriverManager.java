@@ -24,16 +24,27 @@ public class DriverManager {
 
     // Get WebDriver instance for the current thread
     public static WebDriver getDriver() {
-        if (driver.get() == null) {
-            System.out.println("No WebDriver instance found, creating a new one...");
-           //WebDriverManager.chromedriver().setup(); //Not required in case of latest selenium jar
+        // if (driver.get() == null) {
+        //     System.out.println("No WebDriver instance found, creating a new one...");
+        //    //WebDriverManager.chromedriver().setup(); //Not required in case of latest selenium jar
 
-            // Automatically downloads and sets up ChromeDriver
-            driver.set(new ChromeDriver()); // Correctly set the ChromeDriver instance in ThreadLocal
-            //driver.get().manage().window().maximize();
-            driver.get().manage().window().setSize(new Dimension(1600, 1080));  // Replace 1920x1080 with your resolution
+        //     // Automatically downloads and sets up ChromeDriver
+        //     driver.set(new ChromeDriver()); // Correctly set the ChromeDriver instance in ThreadLocal
+        //     //driver.get().manage().window().maximize();
+        //     driver.get().manage().window().setSize(new Dimension(1600, 1080));  // Replace 1920x1080 with your resolution
 
-        }
+        // }
+         if (driver.get() == null) {
+        System.out.println("No WebDriver instance found, creating a new one...");
+        
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless"); // Run in headless mode
+        options.addArguments("--no-sandbox"); // Sandbox issues are common in Docker
+        options.addArguments("--disable-dev-shm-usage"); // Overcome limited resource problems
+        options.addArguments("--window-size=1600,1080"); // Set desired window size
+        
+        driver.set(new ChromeDriver(options));
+    }
         return driver.get();
     }
 
