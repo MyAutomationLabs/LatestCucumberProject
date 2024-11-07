@@ -26,6 +26,6 @@ services:
     depends_on:
       - selenium-hub
     environment:
-      - SELENIUM_REMOTE_URL=http://localhost:4444
+      - SELENIUM_REMOTE_URL=http://selenium-hub:4444/wd/hub
     volumes:
       - .:/usr/src/app
