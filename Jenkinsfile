@@ -6,9 +6,9 @@ pipeline {
         jdk 'JDK 21'         // Adjust JDK version based on project requirements
     }
 
-    environment {
+  /*   environment {
         ALLURE_RESULTS = 'target/allure-results'  // Match the Allure results directory path
-    }
+    } */
 
     stages {
         stage('Checkout') {
@@ -32,20 +32,18 @@ pipeline {
             }
         }
 
-        stage('Debug Allure Results') {
-            steps {
-                // Verify Allure results directory contains results
-                sh 'ls -l target/allure-results'
-            }
-        }
+      stage('Check Allure Results Directory') {
+          steps {
+              sh 'mkdir -p target/allure-results'
+              sh 'ls -l target/allure-results'
+          }
+      }
     }
 
-    post {
-        always {
-            archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
-            
-            // Publish Allure report
-            allure includeProperties: false, jdk: '', reportBuildPolicy: 'ALWAYS', results: [[path: "${env.ALLURE_RESULTS}"]]
-        }
-    }
+  post {
+      always {
+          archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
+          allure includeProperties: false, reportBuildPolicy: 'ALWAYS', results: [[path: 'target/allure-results']]
+      }
+  }
 }

@@ -5,6 +5,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
@@ -13,6 +14,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.ScreenerLoginPage;
 import utilities.DriverManager;
+
+import java.io.ByteArrayInputStream;
 
 public class ScreenerLogin {
 
@@ -98,7 +101,8 @@ public class ScreenerLogin {
 
     @Attachment(value = "Screenshot", type = "image/png")
     public void attachScreenshot() {
-        ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Screenshot", new ByteArrayInputStream(screenshot));
     }
 
     @After
