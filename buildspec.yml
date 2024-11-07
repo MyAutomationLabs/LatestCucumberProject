@@ -8,9 +8,12 @@ phases:
     commands:
       - echo "Starting Install Phase"
       - echo "Setting up Allure CLI for reporting"
-      - curl -o allure.zip -L https://github.com/allure-framework/allure2/releases/download/2.13.8/allure-2.13.8.zip
-      - unzip allure.zip -d /opt/allure-cli
-      - export PATH=$PATH:/opt/allure-cli/allure-2.13.8/bin
+      #- curl -o allure.zip -L https://github.com/allure-framework/allure2/releases/download/2.13.8/allure-2.13.8.zip
+      #- unzip allure.zip -d /opt/allure-cli
+      #- export PATH=$PATH:/opt/allure-cli/allure-2.13.8/bin
+      - curl -o allure.tar.gz -L https://github.com/allure-framework/allure2/releases/download/2.13.8/allure-2.13.8.tgz
+      - tar -zxvf allure.tar.gz -C /opt
+      - export PATH=$PATH:/opt/allure-2.13.8/bin
   pre_build:
     commands:
       - echo "Starting Pre-Build Phase"
@@ -25,7 +28,6 @@ phases:
       - mvn clean package -DskipTests=false
       - echo "Running tests and generating Allure report"
       - mvn test
-      - allure generate allure-results --clean -o allure-report
   post_build:
     commands:
       - echo "Starting Post-Build Phase"
