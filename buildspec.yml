@@ -17,6 +17,7 @@ phases:
       - echo "Cloning repository from GitLab"
       - git clone https://github.com/MyAutomationLabs/LatestCucumberProject.git # replace with your GitLab repo URL
       - cd LatestCucumberProject  # navigate to the project directory
+      - docker-compose up --build
   build:
     commands:
       - echo "Starting Build Phase"
