@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        ALLURE_RESULTS = 'allure-results'  // Folder for Allure results
+        ALLURE_RESULTS = 'target/allure-results'  // Match the Allure results directory path
     }
 
     stages {
@@ -22,23 +22,20 @@ pipeline {
             steps {
                 // Run Maven clean and package
                 sh 'mvn clean package'
-                // script {
-                //     withMaven(maven: 'Maven 3.8.7') {
-                //     sh 'mvn clean package'
-                //     }
-                // }
             }
         }
 
-        stage('Test') {
+        stage('Verify') {  // Renamed to align with 'verify' phase in POM
             steps {
-                // Run TestNG tests with Maven
-                sh 'mvn test'
-                //  script {
-                //      withMaven(maven: 'Maven 3.8.7') {
-                //         sh 'mvn test'
-                //     }
-                // }
+                // Run Maven verify to execute tests and generate the Allure report
+                sh 'mvn verify'
+            }
+        }
+
+        stage('Debug Allure Results') {
+            steps {
+                // Verify Allure results directory contains results
+                sh 'ls -l target/allure-results'
             }
         }
     }
@@ -47,10 +44,6 @@ pipeline {
         always {
             archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
             
-            // Publish TestNG test results
-            // junit allowEmptyResults: true, testResults: 'target/test-output/*.xml'
-            //junit testResults: '**/testng-results/*.xml'
-
             // Publish Allure report
             allure includeProperties: false, jdk: '', reportBuildPolicy: 'ALWAYS', results: [[path: "${env.ALLURE_RESULTS}"]]
         }
