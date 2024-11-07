@@ -34,16 +34,17 @@ public class DriverManager {
         //     driver.get().manage().window().setSize(new Dimension(1600, 1080));  // Replace 1920x1080 with your resolution
 
         // }
-         if (driver.get() == null) {
-        System.out.println("No WebDriver instance found, creating a new one...");
-        
+        if (driver.get() == null) {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless"); // Run in headless mode
-        options.addArguments("--no-sandbox"); // Sandbox issues are common in Docker
-        options.addArguments("--disable-dev-shm-usage"); // Overcome limited resource problems
-        options.addArguments("--window-size=1600,1080"); // Set desired window size
-        
-        driver.set(new ChromeDriver(options));
+        options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+
+        try {
+            driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
         return driver.get();
     }
